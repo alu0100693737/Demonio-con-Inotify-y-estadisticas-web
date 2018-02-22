@@ -1,0 +1,57 @@
+#!/bin/bash
+
+if [ ! -e nombre_demonio.pid ]
+then
+ # no existe el fichero PID
+ echo $$ > nombre_demonio.pid
+else
+ # El fichero PID existe
+ if [ `cat nombre_demonio.pid` -ne $$ ]
+ then
+  mensaje "Imposible ejecutar, este binario ya se está ejecutando."
+  salida
+  # Tambien podríamos trabajar con ps aux para validar la ejecucion.
+ fi
+fi
+
+
+interval=10
+
+mensaje()
+{
+ logger -s -t "mi_demonio[$$]" -- $1
+}
+
+salida() {
+ if [ -e nombre_demonio.pid ]
+ then
+  # El fichero PID existe
+  if [ `cat nombre_demonio.pid` -eq $$ ]
+  then
+   # El PID nos corresponde
+   mensaje "borrando el fichero PID, porque es de esta ejecucion."
+   rm -f nombre_demonio.pid
+  fi
+ fi
+ 
+ exit 0
+}
+
+trap salida SIGTERM SIGKILL
+
+
+iteracion()
+{
+ sleep $interval &
+ wait $!
+}
+
+mensaje "arrancando el demonio con PID=$$"
+while true
+do
+ # hacer lo que sea
+ echo "iteracion"
+ # esperar
+ mensaje "esperando $interval segundos"
+ iteracion
+done

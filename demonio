@@ -1,0 +1,36 @@
+#!/bin/sh
+
+startup=./data/iniciar
+
+shutdown=./data/apagar
+
+interval=10
+
+start() {
+	echo -n "Arrancando servicio"
+	$startup
+}
+
+stop() {
+	echo -n "Parando servicio"
+	$shutdown
+}
+
+iteracion()
+{
+ sleep $interval &
+ wait $!
+}
+
+case "$1" in
+	start)
+		start
+	;;
+	stop)
+		stop
+	;;
+	*) echo "Opcion no permitida"
+		exit 1
+esac
+
+exit 0
