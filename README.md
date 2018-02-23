@@ -11,7 +11,7 @@ El demonio debería:
 
 * Hacer el seguimiento de una o varias carpetas que se le pasen como parámetro.
 
-* Mostrar como mínimo todos los eventos se produzcan correspondientes en la tabla colgada en el campusvirtual EventosInotify al primer bloque (de IN_ACCESS a IN_OPEN).
+* Mostrar como mínimo todos los eventos se produzcan correspondientes en la tabla colgada en el campusvirtual EventosInotify al primer bloque (de IN_ACCESS a IN_OPEN). HECHO
 
 * Opcional: No volver a lanzar el demonio si ya está activo. HECHO
 * Opcional: Monitorizar los eventos en todos los subdirectorios de los directorios especificados.
