@@ -47,6 +47,7 @@ static void mostrar(struct inotify_event *e) {
 }
 
 int main(int argc, char *argv[]) {
+   printf("Entrando en monitorizar");
    while (1) {
       int inotifyFd, wd, i;
       char buf[BUF_LEN];

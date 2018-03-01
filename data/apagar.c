@@ -1,1 +1,4 @@
-hola
+
+int main() {
+    printf("Apagando maquina");
+}

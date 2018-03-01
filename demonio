@@ -1,21 +1,37 @@
 #!/bin/sh
 
 startup=./data/iniciar
-
-shutdown=./data/apagar
-
-monotorizar=./data/monitorizar
+monitorizar=./data/monitorizar
 
 interval=10
 
 start() {
-	echo -n "Arrancando servicio"
-	$startup
+	if find /var/lock/iniciar 2> error.txt; then
+		 echo "Ya ha sido creado anteriormente.\nNO PUEDE INICIARSE UN SEGUNDO DEMONIO, puede parar, monitorear una carpeta o cambiar el tiempo de sincronizacion" >&2
+		 exit 1
+		echo -n "Arrancando servicio"
+		$startup
+	else
+		echo -n "Arrancando servicio"
+		$startup
+	fi
 }
 
+monitorizar() {
+	if(find /var/lock/iniciar 2> error.txt) ; then 
+	echo -n "ASCO"
+
+	echo -n "Iniciado anteriormente Monitorizando"
+	echo $1
+	$monitorizar $1
+	else 
+		echo -n "No se ha iniciado el demonio todavia"
+	fi
+}
 stop() {
 	echo -n "Parando servicio"
-	$shutdown
+	rmdir /var/lock/iniciar
+	pkill -f iniciar
 }
 
 iteracion()
@@ -26,7 +42,12 @@ iteracion()
 
 case "$1" in
 	start)
+		echo "Iniciando Demonio"
 		start
+	;;
+	monitorizar)
+		echo "Vamos a monitorizar"
+		monitorizar
 	;;
 	stop)
 		stop
