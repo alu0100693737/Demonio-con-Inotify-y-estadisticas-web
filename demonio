@@ -4,6 +4,8 @@ startup=./data/iniciar
 
 shutdown=./data/apagar
 
+monotorizar=./data/monitorizar
+
 interval=10
 
 start() {

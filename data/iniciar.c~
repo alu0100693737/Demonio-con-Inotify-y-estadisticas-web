@@ -7,7 +7,8 @@
 #include <syslog.h>
 #include <string.h>
 
-int main(void) {
+int main(void)
+{
 //Tenemos que crear el demonio
    pid_t pid, sid;              //identificador del proceso y de la sesion
 
@@ -62,5 +63,6 @@ int main(void) {
       }
 
       exit(0);
+
    }
 }
