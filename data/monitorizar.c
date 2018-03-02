@@ -48,6 +48,7 @@ static void mostrar(struct inotify_event *e) {
 
 int main(int argc, char *argv[]) {
    printf("Entrando en monitorizar");
+   
    while (1) {
       int inotifyFd, wd, i;
       char buf[BUF_LEN];
@@ -56,14 +57,15 @@ int main(int argc, char *argv[]) {
       struct inotify_event *event;
       inotifyFd = inotify_init();
       if (inotifyFd == -1) {
-         printf("Error");
+         printf("Error 1");
          exit(1);
       }
 
       for (i = 1; i < argc; i++) {
+         printf("Monitorizando: %s", argv[i]);
          wd = inotify_add_watch(inotifyFd, argv[i], IN_ALL_EVENTS);
          if (wd == -1) {
-            printf("Error");
+            printf("Error 2");
             exit(1);
          }
       }

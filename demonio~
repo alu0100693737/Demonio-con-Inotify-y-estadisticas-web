@@ -9,10 +9,10 @@ start() {
 	if find /var/lock/iniciar 2> error.txt; then
 		 echo "Ya ha sido creado anteriormente el servicio.\nNO PUEDE INICIARSE UN SEGUNDO DEMONIO, puede parar, monitorear una carpeta o cambiar el tiempo de sincronizacion" >&2
 		 exit 1
-		echo "Arrancando servicio"
+		echo -n "Arrancando servicio"
 		$startup
 	else
-		echo "Arrancando servicio"
+		echo -n "Arrancando servicio"
 		mkdir /var/lock/iniciar 2> error.txt
 		$startup
 	fi
@@ -20,42 +20,31 @@ start() {
 
 monitorizar() {
 	if(find /var/lock/iniciar 2> error.txt) ; then 
-		
-		shift
-		carpetas=""
-		while [ "$1" != "" ]; do
-			echo "$1"
-	
-		 #Filtrando monitorizar
-		 #if [ "$1" != "monitorizar" ]; then
-		#	echo -n "SI"
-	    	carpetas+="$1" 
-	    	
-	    	carpetas+=" "
-	     #else 
-	    #	echo -n "NOE"
-	     #fi	
-	     shift
+
+carpetas=""
+for var in "$@"
+do
+    #Filtrando monitorizar
+    if [ $var != "monitorizar" ]; then
+		echo "SI"
+    	carpetas+="$var" 
+    	carpetas+=" "
+    fi
     	
-		done
-		
-		echo  "Argumento:" $carpetas
-		
+done
+
+echo $carpetas
 		$monitorizar $carpetas
-		
-		
-	else 
-		echo -n "Error, no se ha iniciado el demonio todavia"
-	fi
-}
-#echo $carpetas
-#		$monitorizar $carpetas
 #	echo "Prueba " $prueba 
 #	echo ${prueba#./demonio}  
 	
 	
 #	echo -n $a "Asco"
  		 
+	else 
+		echo -n "Error, no se ha iniciado el demonio todavia"
+	fi
+}
 
 stop() {
 	echo -n "Parando servicio\n"
@@ -78,7 +67,7 @@ case "$1" in
 		echo  "Parametros: " $@
 	
 		echo  "Llegue hasta aqui," $# " argumentos\n"
-		monitorizar $@
+		monitorizar
 	;;
 	stop)
 		stop

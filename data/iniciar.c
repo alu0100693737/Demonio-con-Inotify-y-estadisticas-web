@@ -11,23 +11,6 @@ int main(void) {
 //Tenemos que crear el demonio
    pid_t pid, sid;              //identificador del proceso y de la sesion
 
-  /* FILE *aux = popen("pgrep -c iniciar", "r");
-   //system("pgrep -c iniciar");
-
-   char buff[255];
-   fscanf(aux, "%s", buff);
-   //printf("Demonio num: %s\n", buff );
-   int valor = buff[0];
-   valor -= 48;                 //Conversion explicita a int
-   //printf("Primer valor %d", valor);
-
-   fclose(aux);
-
-   if (valor > 1) {
-      printf
-          ("\nYa ha sido creado anteriormente.\nNO PUEDE INICIARSE UN SEGUNDO DEMONIO, puede parar, monitorear una carpeta o cambiar el tiempo de sincronizacion\n");
-      exit(1);
-   } else {*/
       //printf("\nCreando el pid");
       pid = fork();             //Creamos el demonio
       printf("\nPID vale %d", pid);
@@ -62,5 +45,4 @@ int main(void) {
       }
 
       exit(0);
- //  }
 }
