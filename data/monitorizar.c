@@ -44,6 +44,8 @@ static void mostrar(struct inotify_event *e) {
 
    if (e->len > 0)
       printf("nombre= %s\n", e->name);
+   else
+      printf("\n");
 }
 
 int main(int argc, char *argv[]) {
