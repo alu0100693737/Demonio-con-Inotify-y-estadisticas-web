@@ -2,6 +2,7 @@
 
 startup=./data/iniciar
 monitorizar=./data/monitorizar
+iniciarServidor=./data/servidor
 
 interval=10
 
@@ -31,7 +32,7 @@ monitorizar() {
 	    	shift
 		done
 		
-		echo  "Argumento:" $carpetas
+		echo  "Se va a monitorizar las carpetas:" $carpetas
 		
 		$monitorizar $carpetas
 		
@@ -39,14 +40,6 @@ monitorizar() {
 		echo -n "Error, no se ha iniciado el demonio todavia"
 	fi
 }
-#echo $carpetas
-#		$monitorizar $carpetas
-#	echo "Prueba " $prueba 
-#	echo ${prueba#./demonio}  
-	
-	
-#	echo -n $a "Asco"
- 		 
 
 stop() {
 	echo -n "Parando servicio\n"
@@ -65,10 +58,9 @@ case "$1" in
 		start
 	;;
 	monitorizar)
-		echo "Vamos a monitorizar"
-		echo  "Parametros: " $@
-	
-		echo  "Llegue hasta aqui," $# " argumentos\n"
+		#echo "Vamos a monitorizar"
+		#echo  "Parametros: " $@
+		#echo  "Se monitorizara las carpetasLlegue hasta aqui," $# " argumentos\n"
 		monitorizar $@
 	;;
 	stop)

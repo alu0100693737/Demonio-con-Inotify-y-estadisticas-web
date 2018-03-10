@@ -13,43 +13,69 @@
 #define BUF_LEN (10*(sizeof(struct inotify_event) + NAME_MAX + 1))
 
 static void mostrar(struct inotify_event *e) {
-   printf("wd=%2d; ", e->wd);
-   if (e->cookie > 0)
-      printf("cookie = %4d; ", e->cookie);
+   
+   FILE *f = fopen("file.txt", "a");
+      if (f == NULL) {
+          printf("Error opening file!\n");
+          exit(1);
+      }
+   
+   fprintf(f, "wd=%2d; ", e->wd);
+   
+   if (e->cookie > 0)  {
+      fprintf(f, "cookie = %4d; ", e->cookie);
+      //printf("cookie = %4d; ", e->cookie);
+   }
 
-   if (e->mask & IN_CREATE)
-      printf("mask=IN_CREATE");
-   if (e->mask & IN_MODIFY)
-      printf("mask= IN_MODIFY");
-   if (e->mask & IN_ACCESS)     //file was accessed
-      printf("mask=IN_ACCESS");
+   if (e->mask & IN_CREATE) 
+      fprintf(f, "mask=IN_CREATE\n");
+      //printf("mask=IN_CREATE");
+   
+   if (e->mask & IN_MODIFY) 
+      fprintf(f, "mask= IN_MODIFY\n");
+   
+   if (e->mask & IN_ACCESS)  //file was accessed
+      fprintf(f, "mask=IN_ACCESS\n");
+      
    if (e->mask & IN_ATTRIB)     //file metadata change  
-      printf("mask=IN_ATTRIB");
+      fprintf(f, "mask=IN_ATTRIB\n");
+      
    if (e->mask & IN_CLOSE_WRITE)
-      printf("mask=IN_CLOSE_WRITE");
+      fprintf(f, "mask=IN_CLOSE_WRITE\n");
+      
    if (e->mask & IN_CLOSE_NOWRITE)
-      printf("mask=IN_CLOSE_NOWRITE");
+      fprintf(f, "mask=IN_CLOSE_NOWRITE\n");
+      
    if (e->mask & IN_DELETE)
-      printf("mask=IN_DELETE");
+      fprintf(f, "mask=IN_DELETE\n");
+      
    if (e->mask & IN_DELETE_SELF)
-      printf("mask=IN_DELETE_SELF");
+      fprintf(f, "mask=IN_DELETE_SELF\n");
+      
    if (e->mask & IN_MOVE_SELF)
-      printf("mask=IN_MOVE_SELF");
+      fprintf(f, "mask=IN_MOVE_SELF\n");
+      
    if (e->mask & IN_MOVED_FROM)
-      printf("mask=IN_MOVED_FROM");
+      fprintf(f, "mask=IN_MOVED_FROM\n");
+      
    if (e->mask & IN_MOVED_TO)
-      printf("mask=IN_MOVED_TO");
+      fprintf(f, "mask=IN_MOVED_TO\n");
+      
    if (e->mask & IN_OPEN)
-      printf("mask=IN_OPEN");
+      fprintf(f, "mask=IN_OPEN\n");
 
    if (e->len > 0)
-      printf("nombre= %s\n", e->name);
-   else
-      printf("\n");
+      fprintf(f, "nombre= %s\n", e->name);
+   
+   if(f != NULL) 
+      fclose(f);
 }
 
 int main(int argc, char *argv[]) {
-   printf("Entrando en monitorizar");
+   
+   char* carpetas = argv[];
+   printf("las carpetas son %d", argc);
+   printf("Entrando en monitorizar\n");
    
    while (1) {
       int inotifyFd, wd, i;
