@@ -25,24 +25,15 @@ monitorizar() {
 		carpetas=""
 		while [ "$1" != "" ]; do
 			echo "$1"
-	
 		 #Filtrando monitorizar
-		 #if [ "$1" != "monitorizar" ]; then
-		#	echo -n "SI"
 	    	carpetas+="$1" 
-	    	
 	    	carpetas+=" "
-	     #else 
-	    #	echo -n "NOE"
-	     #fi	
-	     shift
-    	
+	    	shift
 		done
 		
 		echo  "Argumento:" $carpetas
 		
 		$monitorizar $carpetas
-		
 		
 	else 
 		echo -n "Error, no se ha iniciado el demonio todavia"
