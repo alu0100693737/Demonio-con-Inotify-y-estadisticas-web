@@ -3,6 +3,7 @@
 startup=./data/iniciar
 monitorizar=./data/monitorizar
 iniciarServidor=./data/servidor
+iniciarCliente=./data/cliente
 
 interval=10
 
@@ -10,12 +11,30 @@ start() {
 	if find /var/lock/iniciar 2> error.txt; then
 		 echo "Ya ha sido creado anteriormente el servicio.\nNO PUEDE INICIARSE UN SEGUNDO DEMONIO, puede parar, monitorear una carpeta o cambiar el tiempo de sincronizacion" >&2
 		 exit 1
-		echo "Arrancando servicio"
-		$startup
 	else
 		echo "Arrancando servicio"
 		mkdir /var/lock/iniciar 2> error.txt
 		$startup
+	fi
+}
+
+iniciarCliente() {
+	if(find /var/lock/iniciar 2> error.txt) ; then 
+		shift
+		echo -n "Iniciando cliente"
+		$iniciarCliente $@
+	else 
+		echo -n "Error, no se ha iniciado el demonio todavia"
+	fi
+}
+
+iniciarServidor() {
+	if(find /var/lock/iniciar 2> error.txt) ; then 
+		shift
+		echo -n "Iniciando servidor"
+		$iniciarServidor $@
+	else 
+		echo -n "Error, no se ha iniciado el demonio todavia"
 	fi
 }
 
@@ -32,8 +51,7 @@ monitorizar() {
 	    	shift
 		done
 		
-		echo  "Se va a monitorizar las carpetas:" $carpetas
-		
+		#echo  "Se va a monitorizar las carpetas:" $carpetas
 		$monitorizar $carpetas
 		
 	else 
@@ -42,10 +60,13 @@ monitorizar() {
 }
 
 stop() {
-	echo -n "Parando servicio\n"
+	printf "Parando servicio\n\n"
 	rmdir /var/lock/iniciar 
 	pkill -f iniciar
-	rm error.txt
+	
+	if(find /var/lock/iniciar 2> error.txt) ; then 
+		rm estadisticas.txt
+	fi
 }
 
 iteracion() {
@@ -65,6 +86,12 @@ case "$1" in
 	;;
 	stop)
 		stop
+	;;
+	iniciarCliente)
+		iniciarCliente $@
+	;;
+	iniciarServidor)
+		iniciarServidor $@
 	;;
 	*) echo "Opcion no permitida"
 		exit 1

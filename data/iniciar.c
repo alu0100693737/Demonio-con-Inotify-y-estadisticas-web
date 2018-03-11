@@ -13,7 +13,7 @@ int main(void) {
 
       //printf("\nCreando el pid");
       pid = fork();             //Creamos el demonio
-      printf("\nPID vale %d", pid);
+      printf("PID vale %d \n", pid);
 
       if (pid < 0) {
          exit(1);

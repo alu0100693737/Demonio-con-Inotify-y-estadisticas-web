@@ -9,74 +9,85 @@
 #include <unistd.h>
 #include <syslog.h>
 #include <string.h>
+#include <time.h>
+
 
 #define BUF_LEN (10*(sizeof(struct inotify_event) + NAME_MAX + 1))
 
 static void mostrar(struct inotify_event *e) {
    
-   FILE *f = fopen("file.txt", "a");
+   FILE *f = fopen("estadisticas.txt", "a");
       if (f == NULL) {
           printf("Error opening file!\n");
           exit(1);
       }
    
-   fprintf(f, "wd=%2d; ", e->wd);
-   
+   //fprintf(f, "wd=%2d; ", e->wd);
+   fprintf(f, "carpeta:%2d ", e->wd);
    if (e->cookie > 0)  {
       fprintf(f, "cookie = %4d; ", e->cookie);
       //printf("cookie = %4d; ", e->cookie);
    }
 
    if (e->mask & IN_CREATE) 
-      fprintf(f, "mask=IN_CREATE\n");
+      fprintf(f, "mask=IN_CREATE");
       //printf("mask=IN_CREATE");
    
    if (e->mask & IN_MODIFY) 
-      fprintf(f, "mask= IN_MODIFY\n");
+      fprintf(f, "mask= IN_MODIFY");
    
    if (e->mask & IN_ACCESS)  //file was accessed
-      fprintf(f, "mask=IN_ACCESS\n");
+      fprintf(f, "mask=IN_ACCESS");
       
    if (e->mask & IN_ATTRIB)     //file metadata change  
-      fprintf(f, "mask=IN_ATTRIB\n");
+      fprintf(f, "mask=IN_ATTRIB");
       
    if (e->mask & IN_CLOSE_WRITE)
-      fprintf(f, "mask=IN_CLOSE_WRITE\n");
+      fprintf(f, "mask=IN_CLOSE_WRITE");
       
    if (e->mask & IN_CLOSE_NOWRITE)
-      fprintf(f, "mask=IN_CLOSE_NOWRITE\n");
+      fprintf(f, "mask=IN_CLOSE_NOWRITE");
       
    if (e->mask & IN_DELETE)
-      fprintf(f, "mask=IN_DELETE\n");
+      fprintf(f, "mask=IN_DELETE");
       
    if (e->mask & IN_DELETE_SELF)
-      fprintf(f, "mask=IN_DELETE_SELF\n");
+      fprintf(f, "mask=IN_DELETE_SELF");
       
    if (e->mask & IN_MOVE_SELF)
-      fprintf(f, "mask=IN_MOVE_SELF\n");
+      fprintf(f, "mask=IN_MOVE_SELF");
       
    if (e->mask & IN_MOVED_FROM)
-      fprintf(f, "mask=IN_MOVED_FROM\n");
+      fprintf(f, "mask=IN_MOVED_FROM");
       
    if (e->mask & IN_MOVED_TO)
-      fprintf(f, "mask=IN_MOVED_TO\n");
+      fprintf(f, "mask=IN_MOVED_TO");
       
    if (e->mask & IN_OPEN)
-      fprintf(f, "mask=IN_OPEN\n");
+      fprintf(f, "mask=IN_OPEN");
 
    if (e->len > 0)
-      fprintf(f, "nombre= %s\n", e->name);
+      fprintf(f, " nombre= %s", e->name);
+   
+   fprintf(f, "\n");
    
    if(f != NULL) 
       fclose(f);
 }
 
 int main(int argc, char *argv[]) {
+
+   clock_t begin = clock();
    
-   char* carpetas = argv[];
-   printf("las carpetas son %d", argc);
-   printf("Entrando en monitorizar\n");
+   char *argumentos[argc -1];
    
+   int i;
+   printf("Las carpetas son: \n\t");
+   for(i = 1; i < argc; i++) {
+      argumentos[i - 1] = argv[i];
+      printf("\n \t*  %s \n", argumentos[i - 1]);
+   }
+
    while (1) {
       int inotifyFd, wd, i;
       char buf[BUF_LEN];
@@ -101,11 +112,19 @@ int main(int argc, char *argv[]) {
       for (;;) {
          numRead = read(inotifyFd, buf, BUF_LEN);
          for (buffer = buf; buffer < buf + numRead;) {
+            printf("PEPE");
             event = (struct inotify_event *) buffer;
             mostrar(event);
             buffer += sizeof(struct inotify_event) + event->len;
          }
       }
+      clock_t end = clock();
+      double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+      //if(time_spent > 10) {
+         printf("YES %f", time_spent);
+        // begin = clock();
+      //}
+
    }
 //exit(0);
 }

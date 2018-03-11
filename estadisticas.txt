@@ -1,0 +1,14 @@
+carpeta: 1 mask=IN_OPEN
+carpeta: 1 mask=IN_CLOSE_NOWRITE
+carpeta: 1 mask=IN_CREATE nombre= a
+carpeta: 1 mask=IN_OPEN
+carpeta: 1 mask=IN_ACCESS
+carpeta: 1 mask=IN_CLOSE_NOWRITE
+carpeta: 1 mask=IN_ATTRIB nombre= a
+carpeta: 1 mask=IN_OPEN
+carpeta: 1 mask=IN_ACCESS
+carpeta: 1 mask=IN_CLOSE_NOWRITE
+
+
+
+Error con YES
