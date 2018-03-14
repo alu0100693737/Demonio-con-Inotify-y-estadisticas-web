@@ -20,5 +20,5 @@ El demonio debería:
 * El demonio debe enviar un resumen de las estadísticas cada cierto tiempo a un servidor. El servidor muestra por pantalla o almacena en un fichero dicha información. HECHO por pantalla
 
 * Opcional: Comunicación bidireccional entre el servidor y el cliente.
-* Opcional: Varios procesos o demonios cliente que envían información a un servidor
-* Opcional: Convertir en un demonio el código del servidor  
+* Opcional: Varios procesos o demonios cliente que envían información a un servidor HECHO 1 pid varios monitoreos
+* Opcional: Convertir en un demonio el código del servidor  HECHO
