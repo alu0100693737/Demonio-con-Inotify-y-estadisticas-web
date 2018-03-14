@@ -13,10 +13,10 @@ int main(int argc, char *argv[]) {
 	char buffer[256];
 	struct sockaddr_in serv_addr, cli_addr;
 	int i;
-	
+
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd < 0) 
-		printf("Error");
+		printf("Error\n");
 	
 	bzero((char*)&serv_addr, sizeof(serv_addr));//No hace falta, limpiando servidor
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 	serv_addr.sin_port = htons(portnumber); //transformacion para que el ordenador entienda el numero de puerto
 	
 	if(bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0)
-		printf("Error");
+		printf("Error\n");
 	listen(sockfd, 5);
 
 	

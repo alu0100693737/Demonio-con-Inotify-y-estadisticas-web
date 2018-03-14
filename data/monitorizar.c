@@ -16,19 +16,16 @@
 #define BUF_LEN (10*(sizeof(struct inotify_event) + NAME_MAX + 1))
 #define FICHERO_ESTADISTICAS "estadisticas.txt"
 
-static void mostrar(struct inotify_event *e, char *argumentos[]) {
+static void mostrar(struct inotify_event *e, char *argumentos[], int iteracion) {
    
    FILE *f = fopen(FICHERO_ESTADISTICAS, "a");
-      if (f == NULL) {
-          printf("Error opening file!\n");
-          exit(1);
-      }
+   if (f == NULL) {
+       printf("Error opening file!\n");
+       exit(1);
+   }
    
    //fprintf(f, "wd=%2d; ", e->wd);
-   //fprintf(f, "carpeta: %2d ", e->wd);
-  
-   fprintf(f, "Carpeta: %s ", argumentos[(e->wd - 1)]);
-   
+   fprintf(f, "%d. Carpeta: %s ", iteracion, argumentos[(e->wd - 1)]);
       
    if (e->cookie > 0)  {
       fprintf(f, "cookie = %4d; ", e->cookie);
@@ -84,24 +81,22 @@ static void mostrar(struct inotify_event *e, char *argumentos[]) {
 int main(int argc, char *argv[]) {
   time_t rawtime;
   const struct tm * timeinfo;
-  
   time ( &rawtime );
   timeinfo = localtime ( &rawtime );
   
   printf ( "Current local time and date: %s", asctime (timeinfo) );
    int minutoActual = timeinfo->tm_min;
 
- //printf("[%d %d %d %d:%d:%d]",timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
-   
-   char* argumentos[argc -1];
-   
+   //escribir el nombre de la carpeta
+   char* argumentos[argc -1]; 
    int i;
    printf("Las carpetas son: \n\t");
    for(i = 1; i < argc; i++) {
       argumentos[i - 1] = argv[i];
       printf("\n \t*  %s \n", argumentos[i - 1]);
    }
-
+   //Num lineas fichero
+   int iteracion = 0;
     while (1) {
       int inotifyFd, wd, i;
       char buf[BUF_LEN];
@@ -127,13 +122,10 @@ int main(int argc, char *argv[]) {
          numRead = read(inotifyFd, buf, BUF_LEN);
          for (buffer = buf; buffer < buf + numRead;) {
             event = (struct inotify_event *) buffer;
-            mostrar(event, argumentos);
+            iteracion++;
+            mostrar(event, argumentos, iteracion);
             buffer += sizeof(struct inotify_event) + event->len;
          }
-      
-      
-      
- 
 
          time ( &rawtime );
          timeinfo = localtime ( &rawtime );
@@ -146,6 +138,7 @@ int main(int argc, char *argv[]) {
             minutoActual = timeinfo->tm_min;
             printf("minuto actual ahora vale %d", minutoActual);
             remove(FICHERO_ESTADISTICAS);
+            iteracion = 0;
          }
       }
 

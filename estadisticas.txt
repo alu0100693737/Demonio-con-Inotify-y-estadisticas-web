@@ -1,5 +1,5 @@
-Carpeta: data mask=IN_ACCESS
-Carpeta: data mask=IN_CLOSE_NOWRITE
-Carpeta: data mask=IN_OPEN nombre= cliente
-Carpeta: data mask=IN_ACCESS nombre= cliente
-Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+1. Carpeta: data mask=IN_ACCESS
+2. Carpeta: data mask=IN_CLOSE_NOWRITE
+3. Carpeta: data mask=IN_OPEN nombre= cliente
+4. Carpeta: data mask=IN_ACCESS nombre= cliente
+5. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
