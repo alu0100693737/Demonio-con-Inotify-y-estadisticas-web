@@ -13,6 +13,15 @@ int main(int argc, char *argv[]) {
 	struct hostent *server;
 	char buffer[256];
 	
+	
+	
+/*	const int MAX_SIZE = 99999;
+	char buf[MAX_SIZE];
+	if (!fgets(buf, MAX_SIZE, argv[3]) {
+		cerr << "Read error";
+		exit(1);
+	}*/
+	
 	portnumber = atoi(argv[2]);
 	
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);

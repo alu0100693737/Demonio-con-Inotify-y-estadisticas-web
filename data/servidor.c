@@ -52,6 +52,7 @@ int main(int argc, char *argv[]) {
 			printf("Mensaje recibido: %s\n", buffer);
 			exit(0);
 		} else  {
+			
 			close(newsockfd);
 		}
 	}

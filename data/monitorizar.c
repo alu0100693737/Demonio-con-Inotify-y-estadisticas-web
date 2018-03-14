@@ -10,20 +10,26 @@
 #include <syslog.h>
 #include <string.h>
 #include <time.h>
+#include <sys/time.h>
 
 
 #define BUF_LEN (10*(sizeof(struct inotify_event) + NAME_MAX + 1))
+#define FICHERO_ESTADISTICAS "estadisticas.txt"
 
-static void mostrar(struct inotify_event *e) {
+static void mostrar(struct inotify_event *e, char *argumentos[]) {
    
-   FILE *f = fopen("estadisticas.txt", "a");
+   FILE *f = fopen(FICHERO_ESTADISTICAS, "a");
       if (f == NULL) {
           printf("Error opening file!\n");
           exit(1);
       }
    
    //fprintf(f, "wd=%2d; ", e->wd);
-   fprintf(f, "carpeta:%2d ", e->wd);
+   //fprintf(f, "carpeta: %2d ", e->wd);
+  
+   fprintf(f, "Carpeta: %s ", argumentos[(e->wd - 1)]);
+   
+      
    if (e->cookie > 0)  {
       fprintf(f, "cookie = %4d; ", e->cookie);
       //printf("cookie = %4d; ", e->cookie);
@@ -70,16 +76,24 @@ static void mostrar(struct inotify_event *e) {
       fprintf(f, " nombre= %s", e->name);
    
    fprintf(f, "\n");
-   
+
    if(f != NULL) 
       fclose(f);
 }
 
 int main(int argc, char *argv[]) {
+  time_t rawtime;
+  const struct tm * timeinfo;
+  
+  time ( &rawtime );
+  timeinfo = localtime ( &rawtime );
+  
+  printf ( "Current local time and date: %s", asctime (timeinfo) );
+   int minutoActual = timeinfo->tm_min;
 
-   clock_t begin = clock();
+ //printf("[%d %d %d %d:%d:%d]",timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
    
-   char *argumentos[argc -1];
+   char* argumentos[argc -1];
    
    int i;
    printf("Las carpetas son: \n\t");
@@ -88,7 +102,7 @@ int main(int argc, char *argv[]) {
       printf("\n \t*  %s \n", argumentos[i - 1]);
    }
 
-   while (1) {
+    while (1) {
       int inotifyFd, wd, i;
       char buf[BUF_LEN];
       ssize_t numRead;
@@ -96,34 +110,44 @@ int main(int argc, char *argv[]) {
       struct inotify_event *event;
       inotifyFd = inotify_init();
       if (inotifyFd == -1) {
-         printf("Error 1");
+         printf("Error 1\n");
          exit(1);
       }
-
+   
       for (i = 1; i < argc; i++) {
-         printf("Monitorizando: %s", argv[i]);
+         printf("Monitorizando: %s\n", argv[i]);
          wd = inotify_add_watch(inotifyFd, argv[i], IN_ALL_EVENTS);
          if (wd == -1) {
-            printf("Error 2");
+            printf("Error 2\n");
             exit(1);
          }
       }
-
+   
       for (;;) {
          numRead = read(inotifyFd, buf, BUF_LEN);
          for (buffer = buf; buffer < buf + numRead;) {
-            printf("PEPE");
             event = (struct inotify_event *) buffer;
-            mostrar(event);
+            mostrar(event, argumentos);
             buffer += sizeof(struct inotify_event) + event->len;
          }
+      
+      
+      
+ 
+
+         time ( &rawtime );
+         timeinfo = localtime ( &rawtime );
+         //printf ( "Current2 local time and date: %s", asctime (timeinfo) );
+         printf("minuto anterior: %d, actual %d:%d \n", minutoActual, timeinfo->tm_min, timeinfo->tm_sec);
+         if(minutoActual != timeinfo->tm_min) {
+            printf("A pasado un min, subir información");
+            int status = system("./data/cliente localhost 8888 estadisticas.txt");
+
+            minutoActual = timeinfo->tm_min;
+            printf("minuto actual ahora vale %d", minutoActual);
+            remove(FICHERO_ESTADISTICAS);
+         }
       }
-      clock_t end = clock();
-      double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-      //if(time_spent > 10) {
-         printf("YES %f", time_spent);
-        // begin = clock();
-      //}
 
    }
 //exit(0);
