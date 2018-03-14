@@ -1,13 +1,9 @@
-1. Carpeta: data mask=IN_OPEN nombre= cliente
-2. Carpeta: data mask=IN_ACCESS nombre= cliente
-3. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
-4. Carpeta: 1 mask=IN_OPEN
-5. Carpeta: 1 mask=IN_ACCESS
-6. Carpeta: 1 mask=IN_ACCESS
-7. Carpeta: 1 mask=IN_CLOSE_NOWRITE
-8. Carpeta: data mask=IN_OPEN
-9. Carpeta: data mask=IN_ACCESS
-10. Carpeta: data mask=IN_CLOSE_NOWRITE
-11. Carpeta: data mask=IN_OPEN nombre= servidor.c
-12. Carpeta: data mask=IN_ACCESS nombre= servidor.c
-13. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= servidor.c
+1. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= servidor.c
+2. Carpeta: data mask=IN_OPEN nombre= servidor.c
+3. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= servidor.c
+4. Carpeta: data mask=IN_OPEN nombre= cliente
+5. Carpeta: data mask=IN_ACCESS nombre= cliente
+6. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+7. Carpeta: 1 mask=IN_OPEN
+8. Carpeta: 1 mask=IN_ACCESS
+9. Carpeta: 1 mask=IN_CLOSE_NOWRITE
