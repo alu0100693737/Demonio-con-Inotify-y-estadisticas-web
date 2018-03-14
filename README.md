@@ -7,9 +7,9 @@ El objetivo es que el demonio escriba en un log todos los eventos que se produzc
 
 El demonio debería:
 
-* Lanzarse y detenerse correctamente. HECHO. Solo una ejecucion a la vez
+* Lanzarse y detenerse correctamente. HECHO. Solo una ejecucion a la vez HECHO
 
-* Hacer el seguimiento de una o varias carpetas que se le pasen como parámetro.
+* Hacer el seguimiento de una o varias carpetas que se le pasen como parámetro. HECHO
 
 * Mostrar como mínimo todos los eventos se produzcan correspondientes en la tabla colgada en el campusvirtual EventosInotify al primer bloque (de IN_ACCESS a IN_OPEN). HECHO
 
@@ -17,7 +17,7 @@ El demonio debería:
 * Opcional: Monitorizar los eventos en todos los subdirectorios de los directorios especificados.
 * Opcional: Si se añaden o borran subdirectorios la monitorización debería actualizarse dinámicamente. 
 
-* El demonio debe enviar un resumen de las estadísticas cada cierto tiempo a un servidor. El servidor muestra por pantalla o almacena en un fichero dicha información. 
+* El demonio debe enviar un resumen de las estadísticas cada cierto tiempo a un servidor. El servidor muestra por pantalla o almacena en un fichero dicha información. HECHO por pantalla
 
 * Opcional: Comunicación bidireccional entre el servidor y el cliente.
 * Opcional: Varios procesos o demonios cliente que envían información a un servidor
