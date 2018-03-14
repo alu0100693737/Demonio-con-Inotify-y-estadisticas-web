@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
 	
 	if(bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0)
 		printf("Error\n");
+		
 	listen(sockfd, 5);
 
 	

@@ -1,0 +1,33 @@
+#!/bin/bash
+iniciarServidor=./data/servidor
+
+start() {
+	if find /var/lock/iniciarServidor 2> error.txt; then
+		 echo "Ya ha sido creado anteriormente el servicio.\nNO PUEDE INICIARSE UN SEGUNDO DEMONIO, puede parar, monitorear una carpeta o cambiar el tiempo de sincronizacion" >&2
+		 exit 1
+	else
+		echo "Arrancando servicio Servidor"
+		shift
+		mkdir /var/lock/iniciarServidor 2> error.txt
+		$iniciarServidor $@
+	fi
+}
+
+stop() {
+	echo "Parando servicio servidor"
+	rmdir /var/lock/iniciarServidor
+		pkill -f servidor
+}
+
+case "$1" in
+	start)
+		start $@
+	;;
+		stop)
+		stop
+	;;
+		*) echo "Opcion no permitida"
+		exit 1
+esac
+
+exit 0
