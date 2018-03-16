@@ -4,8 +4,6 @@ startup=./data/iniciar
 monitorizar=./data/monitorizar
 iniciarCliente=./data/cliente
 
-interval=10
-
 start() {
 	if find /var/lock/iniciar 2> error.txt; then
 		 echo "Ya ha sido creado anteriormente el servicio.\nNO PUEDE INICIARSE UN SEGUNDO DEMONIO, puede parar, monitorear una carpeta o cambiar el tiempo de sincronizacion" >&2
@@ -64,14 +62,14 @@ stop() {
 	pkill -f iniciar
 	
 	if(find /var/lock/iniciar 2> error.txt) ; then 
-		rm estadisticas.txt
 		rmdir /var/lock/iniciar 
 	fi
-}
-
-iteracion() {
- sleep $interval &
- wait $!
+	
+	#Cuando cerramos hay que hacer la ultima conexion de datos al servidor
+	data/cliente localhost 8888 estadisticasCliente.txt;
+	echo "Borrando ultimas estadisticas"
+	rm estadisticasCliente.txt;
+	rm error.txt
 }
 
 case "$1" in

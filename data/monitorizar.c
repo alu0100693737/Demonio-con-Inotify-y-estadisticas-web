@@ -14,11 +14,11 @@
 
 
 #define BUF_LEN (10*(sizeof(struct inotify_event) + NAME_MAX + 1))
-#define FICHERO_ESTADISTICAS "estadisticas.txt"
+#define FICHERO_ESTADISTICASCLIENTE "estadisticasCliente.txt"
 
-static void mostrar(struct inotify_event *e, char *argumentos[], int iteracion) {
+static int mostrar(struct inotify_event *e, char *argumentos[], int iteracion) {
    
-   FILE *f = fopen(FICHERO_ESTADISTICAS, "a");
+   FILE *f = fopen(FICHERO_ESTADISTICASCLIENTE, "a");
    if (f == NULL) {
        printf("Error opening file!\n");
        exit(1);
@@ -54,11 +54,14 @@ static void mostrar(struct inotify_event *e, char *argumentos[], int iteracion) 
    if (e->mask & IN_DELETE)
       fprintf(f, "mask=IN_DELETE");
       
-   if (e->mask & IN_DELETE_SELF)
+   if (e->mask & IN_DELETE_SELF) {
       fprintf(f, "mask=IN_DELETE_SELF");
+      return e->wd;
+   }
       
-   if (e->mask & IN_MOVE_SELF)
+   if (e->mask & IN_MOVE_SELF) 
       fprintf(f, "mask=IN_MOVE_SELF");
+   
       
    if (e->mask & IN_MOVED_FROM)
       fprintf(f, "mask=IN_MOVED_FROM");
@@ -76,6 +79,8 @@ static void mostrar(struct inotify_event *e, char *argumentos[], int iteracion) 
 
    if(f != NULL) 
       fclose(f);
+      
+   return 0; //Caso eliminar watch
 }
 
 int main(int argc, char *argv[]) {
@@ -108,12 +113,13 @@ int main(int argc, char *argv[]) {
          printf("Error 1\n");
          exit(1);
       }
+      
    
       for (i = 1; i < argc; i++) {
          printf("Monitorizando: %s\n", argv[i]);
          wd = inotify_add_watch(inotifyFd, argv[i], IN_ALL_EVENTS);
          if (wd == -1) {
-            printf("Error 2\n");
+            printf("No se pudo añadir el watcher inotify. Error 2\n");
             exit(1);
          }
       }
@@ -123,7 +129,17 @@ int main(int argc, char *argv[]) {
          for (buffer = buf; buffer < buf + numRead;) {
             event = (struct inotify_event *) buffer;
             iteracion++;
-            mostrar(event, argumentos, iteracion);
+            int value;
+            value = mostrar(event, argumentos, iteracion);
+            if(value != 0) { //Se acaba de borrar el directorio que se estaba monitorizando 
+               printf("OU");
+               int value;
+               value = inotify_rm_watch(inotifyFd, event->wd);  
+              /** if (value == -1) {
+                  printf("No se pudo añadir el watcher inotify. Error 2\n");
+                  exit(1);
+               }*/
+            }
             buffer += sizeof(struct inotify_event) + event->len;
          }
 
@@ -133,11 +149,11 @@ int main(int argc, char *argv[]) {
          printf("minuto anterior: %d, actual %d:%d \n", minutoActual, timeinfo->tm_min, timeinfo->tm_sec);
          if(minutoActual != timeinfo->tm_min) {
             printf("A pasado un min, subir información");
-            int status = system("./data/cliente localhost 8888 estadisticas.txt");
+            int status = system("./data/cliente localhost 8888 estadisticasCliente.txt");
 
             minutoActual = timeinfo->tm_min;
             printf("minuto actual ahora vale %d", minutoActual);
-            remove(FICHERO_ESTADISTICAS);
+            remove(FICHERO_ESTADISTICASCLIENTE);
             iteracion = 0;
          }
       }

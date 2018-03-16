@@ -1,0 +1,88 @@
+1. Carpeta: 1 mask=IN_OPEN
+1. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+2. Carpeta: 1 mask=IN_OPEN
+3. Carpeta: 1 mask=IN_ACCESS
+4. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+5. Carpeta: 1 mask=IN_OPEN
+6. Carpeta: 1 mask=IN_ACCESS
+7. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+8. Carpeta: 1 mask=IN_OPEN nombre= c
+9. Carpeta: 1 mask=IN_ATTRIB nombre= c
+10. Carpeta: 1 mask=IN_CLOSE_WRITE nombre= c
+11. Carpeta: 1 mask=IN_OPEN
+12. Carpeta: 1 mask=IN_ACCESS
+13. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+14. Carpeta: 1 mask=IN_CREATE nombre= asco
+15. Carpeta: 1 mask=IN_OPEN
+16. Carpeta: 1 mask=IN_ACCESS
+17. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+18. Carpeta: 1 mask=IN_CREATE nombre= eeer
+19. Carpeta: 1 mask=IN_OPEN nombre= eeer
+20. Carpeta: 1 mask=IN_ATTRIB nombre= eeer
+21. Carpeta: 1 mask=IN_CLOSE_WRITE nombre= eeer
+22. Carpeta: 1 mask=IN_OPEN
+23. Carpeta: 1 mask=IN_ACCESS
+24. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+25. Carpeta: 1 mask=IN_OPEN
+1. Carpeta: 1 mask=IN_ACCESS
+2. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+3. Carpeta: 1 mask=IN_OPEN
+4. Carpeta: 1 mask=IN_ACCESS
+5. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+6. Carpeta: 1 mask=IN_OPEN nombre= c
+7. Carpeta: 1 mask=IN_ATTRIB nombre= c
+8. Carpeta: 1 mask=IN_CLOSE_WRITE nombre= c
+9. Carpeta: 1 mask=IN_OPEN
+10. Carpeta: 1 mask=IN_ACCESS
+11. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+12. Carpeta: 1 mask=IN_CREATE nombre= caca
+13. Carpeta: 1 mask=IN_OPEN nombre= caca
+1. Carpeta: 1 mask=IN_ATTRIB nombre= caca
+2. Carpeta: 1 mask=IN_CLOSE_WRITE nombre= caca
+3. Carpeta: 1 mask=IN_OPEN
+4. Carpeta: 1 mask=IN_ACCESS
+5. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+6. Carpeta: 1 mask=IN_CREATE nombre= prueba444
+7. Carpeta: 1 mask=IN_OPEN
+8. Carpeta: 1 mask=IN_ACCESS
+9. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+10. Carpeta: 1 mask=IN_CREATE nombre= a
+11. Carpeta: 1 mask=IN_OPEN nombre= a
+12. Carpeta: 1 mask=IN_ATTRIB nombre= a
+13. Carpeta: 1 mask=IN_CLOSE_WRITE nombre= a
+14. Carpeta: 1 mask=IN_OPEN
+15. Carpeta: 1 mask=IN_ACCESS
+16. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+17. Carpeta: 1 mask=IN_OPEN
+18. Carpeta: 1 mask=IN_ACCESS
+19. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+20. Carpeta: 1 mask=IN_OPEN
+21. Carpeta: 1 mask=IN_ACCESS
+22. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+23. Carpeta: 1 mask=IN_OPEN
+24. Carpeta: 1 mask=IN_ACCESS
+25. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+26. Carpeta: 1 mask=IN_OPEN
+27. Carpeta: 1 mask=IN_ACCESS
+28. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+29. Carpeta: 1 mask=IN_OPEN
+30. Carpeta: 1 mask=IN_ACCESS
+31. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+32. Carpeta: 1 cookie = 10288517; mask=IN_MOVED_FROM nombre= a
+33. Carpeta: 1 mask=IN_OPEN
+34. Carpeta: 1 mask=IN_ACCESS
+35. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+36. Carpeta: 1 mask=IN_OPEN
+37. Carpeta: 1 mask=IN_ACCESS
+38. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+39. Carpeta: 1 mask=IN_OPEN
+40. Carpeta: 1 mask=IN_ACCESS
+41. Carpeta: 1 mask=IN_ACCESS
+42. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+43. Carpeta: 1 mask=IN_OPEN
+1. Carpeta: 1 mask=IN_ACCESS
+2. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+3. Carpeta: 1 mask=IN_OPEN nombre= prueba444
+1. Carpeta: 1 mask=IN_ACCESS nombre= prueba444
+2. Carpeta: 1 mask=IN_CLOSE_NOWRITE nombre= prueba444
+3. ENVIADO LO ULTIMO

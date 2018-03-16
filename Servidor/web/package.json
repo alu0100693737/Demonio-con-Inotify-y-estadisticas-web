@@ -1,0 +1,17 @@
+{
+  "name": "hello",
+  "version": "0.0.0",
+  "description": "",
+  "main": "hello.js",
+  "dependencies": {
+    "ejs": "*",
+    "express": "*",
+    "ip": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node hello.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

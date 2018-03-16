@@ -1,5 +1,5 @@
 #!/bin/bash
-iniciarServidor=./data/servidor
+iniciarServidor=./servidor
 
 start() {
 	if find /var/lock/iniciarServidor 2> error.txt; then
@@ -8,7 +8,6 @@ start() {
 	else
 		echo "Arrancando servicio Servidor"
 		shift
-		mkdir /var/lock/iniciarServidor 2> error.txt
 		$iniciarServidor $@
 	fi
 }
@@ -16,7 +15,8 @@ start() {
 stop() {
 	echo "Parando servicio servidor"
 	rmdir /var/lock/iniciarServidor
-		pkill -f servidor
+	pkill -f servidor
+	rm error.txt
 }
 
 case "$1" in

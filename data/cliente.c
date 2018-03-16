@@ -15,14 +15,8 @@ int main(int argc, char *argv[]) {
 	char *buffer = NULL;
 	int string_size, read_size;
 	
-	FILE* fFile = fopen(argv[3], "r");
-	
-/*	const int MAX_SIZE = 99999;
-	char buf[MAX_SIZE];
-	
-	
-	
-*/	
+		FILE* fFile = fopen(argv[3], "r");
+
 	 // Seek the last byte of the file
        fseek(fFile, 0, SEEK_END);
        // Offset from the first to the last byte, or in other words, filesize
@@ -47,11 +41,6 @@ int main(int argc, char *argv[]) {
            buffer = NULL;
        }
 
-
-	/*if (!fgets(buffer, 256, fFile)) {
-		printf("Read error\n");
-		exit(1);
-	}*/
 	printf("EA %s \n", buffer);
 	
 	portnumber = atoi(argv[2]);

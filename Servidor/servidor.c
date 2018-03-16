@@ -6,11 +6,13 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
+#define FICHERO_ESTADISTICASSERVIDOR "estadisticasServidor.txt"
+
 int main(int argc, char *argv[]) {
 	int sockfd, newsockfd, portnumber;
 	int pid;
 	socklen_t clilen;
-	char buffer[256];
+	char buffer[4096];
 	struct sockaddr_in serv_addr, cli_addr;
 	int i;
 
@@ -32,7 +34,9 @@ int main(int argc, char *argv[]) {
 
 	
 	clilen = sizeof(cli_addr);
-
+	
+	system("mkdir /var/lock/iniciarServidor 2> error.txt");
+	system("rm error.txt");
 	while(1) { //enviar mas de un mensaje
 		newsockfd = accept(sockfd, (struct sockaddr*)&cli_addr, &clilen);
 
@@ -45,12 +49,25 @@ int main(int argc, char *argv[]) {
 			close(sockfd);
 
 			//Limpieza del buffer
-			bzero(buffer, 256);
-			i = read(newsockfd, buffer, 255);
+			bzero(buffer, 4096);
+			i = read(newsockfd, buffer, 4095);
 			if(i<0)
 				printf("Error");
-	
+			
+			FILE *f = fopen(FICHERO_ESTADISTICASSERVIDOR, "a");
+			if (f == NULL) {
+		       printf("Error opening file!\n");
+		       exit(1);
+			}
+			int results = fputs(buffer, f);
+			if (results == EOF) {
+				printf("Error leyendo \n");
+			}
+			
 			printf("Mensaje recibido: %s\n", buffer);
+			
+			if(f != NULL) 
+    		fclose(f);
 			exit(0);
 		} else  {
 			
