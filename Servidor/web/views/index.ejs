@@ -1,21 +1,86 @@
 <!doctype html>
 <html>
-  <head>
-    <title><%- title %></title>
-    <link href="css/global.css" rel="stylesheet" type="text/css" id="prueba">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-    <!--<script type="text/javascript" src="js/csv.js"></script>-->
-  </head>
-  <body>
-    <div>
-      <div>
-        <h1><%- title  %></h1>
-        <p>Welcome to <%- title %></p>
-        <p>go to <a href="/chuchu">chuchu</a></p>
-        <p>go <a href="/">home</a></p>
-      </div>
-    </div>
-  </body>
+<head>
+  <title>Estadisticas Inotify</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <link href="./css/global.css" rel="stylesheet" type="text/css">
+  <script src="./js/parsearFichero.js"></script>
+  <script src="./js/main.js"></script>
+</head>
+<body>
+  <h1>Estadisticas Inotify</h1>
+  <section>
+    <table id="miTabla">
+      <tbody>
+        <tr>
+          <td>  <table class="carpetas">>
+
+            <tr>
+              <td><FONT FACE="raro, courier" SIZE=4 COLOR="black">Nombre: Carpeta</FONT></td>
+              <td><FONT FACE="raro, courier" SIZE=5 COLOR="black">Num de llamadas</FONT></td>
+            </tr>
+            <tr>
+              <td>IN_CREATE</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_MODIFY</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_ACCESS</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_ATTRIB</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_CLOSE_WRITE</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_CLOSE_NOWRITE</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_DELETE</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_DELETE_SELF</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_MOVE_SELF</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_MOVED_FROM</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_MOVED_TO</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>IN_OPEN</td>
+              <td></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <button class="button" id="anadirFila">Actualizar tabla</button>
+</section>
+<section>
+  <input type="file" id="file-input" /><br><br>
+  <div id="texto">
+    <pre id="file-content"></pre>
+  </div>
+</section>
+</body>
 </html>
