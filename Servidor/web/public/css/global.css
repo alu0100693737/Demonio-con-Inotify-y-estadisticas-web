@@ -8,19 +8,12 @@ body {
   font-family: "	Tw Cen MT";
   margin: 5%;
   margin-left: 15%;
-}
-
-#miTabla {
-  background-color: white:
-}
-
-div#texto {
-  background-color: rgba(255, 255, 255, 0.5);
-  margin-right: 30%;
+  position: relative;
 }
 
 #file-content {
-  padding: 3%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .carpetas th, .carpetas td {
@@ -95,8 +88,17 @@ a[title]:hover:after {
   background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
   background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
 }
-section {
-  margin: 5% 0%;
-  margin-right: 5%;
+.contenido {
+  margin: 10px 0px;
+  margin-right: 40px;
   background-color: rgba(255, 255, 255, 0.1);
+  position:relative;
+  z-index: 1;
+}
+div {
+  position: relative;
+}
+
+table {
+  margin:2%;
 }

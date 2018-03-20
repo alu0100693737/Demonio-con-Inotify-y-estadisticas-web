@@ -1,0 +1,20 @@
+1. Carpeta: 1 mask=IN_OPEN
+1. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+2. Carpeta: 1 mask=IN_OPEN
+3. Carpeta: pepa mask=IN_ACCESS
+4. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+5. Carpeta: 1 mask=IN_OPEN
+6. Carpeta: 1 mask=IN_ACCESS
+7. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+8. Carpeta: c mask=IN_OPEN nombre= c
+9. Carpeta: 1 mask=IN_ATTRIB nombre= c
+10. Carpeta: 1 mask=IN_CLOSE_WRITE nombre= c
+11. Carpeta: 1 mask=IN_OPEN
+12. Carpeta: 1 mask=IN_ACCESS
+13. Carpeta: asco mask=IN_CLOSE_NOWRITE
+14. Carpeta: 1 mask=IN_CREATE nombre= asco
+15. Carpeta: data mask=IN_OPEN
+16. Carpeta: data mask=IN_ACCESS
+17. Carpeta: data mask=IN_CLOSE_NOWRITE
+18. Carpeta: 1 mask=IN_CREATE nombre= eeer
+19. Carpeta: 1 mask=IN_OPEN nombre= eeer

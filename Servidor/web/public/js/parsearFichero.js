@@ -10,6 +10,13 @@ function readSingleFile(e) {
     displayContents(contents);
   };
   reader.readAsText(file);
+
+  var input = document.getElementById("file-input");
+  var file = input.value.split("\\");
+  var fileName = file[file.length-1];
+  console.log("ASCO " + fileName);
+  //Actualizamos las tablas de estadisticas actuales
+  leerFicheroEstadisticas(fileName);
 }
 
 function displayContents(contents) {
@@ -18,10 +25,11 @@ function displayContents(contents) {
 }
 
 //Nuevo
-function leerFicheroEstadisticas() {
+function leerFicheroEstadisticas(fichero) {
   var rawFile = new XMLHttpRequest();
   var allText;
-  rawFile.open("GET", "estadisticasServidor.txt", false);
+
+  rawFile.open("GET", fichero, false);
   rawFile.onreadystatechange = function ()  {
     if(rawFile.readyState === 4)  {
       if(rawFile.status === 200 || rawFile.status == 0) {
@@ -38,11 +46,16 @@ function leerFicheroEstadisticas() {
   rawFile.send(null);
 }
 
-function filtrarYClasificar(splitear) {
-  var propiedades = {nombre:"", create:0, open:0, modify:0, access:0, attrib:0,
-    close_write:0, close_nowrite:0, deletefile:0, deletefile_self:0,
-    move_self:0, moved_from:0, moved_to:0, open:0};
+function propiedades() {
+  this.nombre = ""; this.create = 0; this.open = 0; this.modify = 0; this.access = 0; this.attrib = 0;
+  this.close_write = 0; this.close_nowrite = 0; this.deletefile = 0; this.deletefile_self = 0;
+  this.move_self = 0; this.moved_from = 0; this.moved_to = 0; this.open = 0;
+  /*nombre:"", create:0, open:0, modify:0, access:0, attrib:0,
+  close_write:0, close_nowrite:0, deletefile:0, deletefile_self:0,
+  move_self:0, moved_from:0, moved_to:0, open:0*/
+}
 
+function filtrarYClasificar(splitear) {
   var carpetas = [];
 
   console.log("Valor " + splitear.length);
@@ -52,20 +65,22 @@ function filtrarYClasificar(splitear) {
       var j;
       var encontrado = false;
       for(j = 0; j < carpetas.length; j++) {
-          if(carpetas[j].nombre == palabras[2]) {
+          if(carpetas[j].nombre.trim() == palabras[2].trim()) {
             encontrado = true;
             break;
           }
       }
       if(encontrado == false) {
-        var nuevaPropiedad = propiedades;
+        var nuevaPropiedad = new propiedades;
         console.log("Intentando anadir la carpeta " + palabras[2]);
-        nuevaPropiedad.nombre = palabras[2];
+
         carpetas.push(nuevaPropiedad);
+        carpetas[j].nombre = palabras[2].trim();
+        console.log("j vale " + j + " " + carpetas[j].nombre);
       }
 
       var opcion = palabras[3].trim();
-      console.log("J vale " + j);
+
       switch(opcion) {
 
         case "mask=IN_OPEN":
@@ -138,4 +153,48 @@ function filtrarYClasificar(splitear) {
   console.log("Moved_to: " + moved_to);*/
 
   console.log(carpetas);
+  mostrarResultado(carpetas);
+}
+
+function mostrarResultado(carpetas) {
+  var i;
+  var contenido = "";
+  for(i = 0; i < carpetas.length; i++) {
+      if ((i % 2) == 1) {
+        contenido += '<table style="display: inline-block;">';
+      } else {
+        contenido += '<table style="float: left;">';
+      }
+
+      contenido += '<tbody><tr><td>  <table class="carpetas">><tr><td><FONT FACE="raro, courier" SIZE=4 COLOR="black">Nombre: ';
+      contenido += carpetas[i].nombre.trim();
+
+      contenido += '</FONT></td><td><FONT FACE="raro, courier" SIZE=5 COLOR="black">Num de llamadas</FONT></td></tr><tr><td>IN_CREATE</td><td>';
+      contenido += carpetas[i].create;
+      contenido += '</td></tr><tr><td>IN_OPEN</td><td>';
+      contenido += carpetas[i].open;
+      contenido += '</td></tr><tr><td>IN_MODIFY</td><td>';
+      contenido += carpetas[i].modify;
+      contenido += '</td></tr><tr><td>IN_ACCESS</td><td>';
+      contenido += carpetas[i].access;
+      contenido += '</td></tr><tr><td>IN_ATTRIB</td><td>';
+      contenido += carpetas[i].attrib;
+      contenido += '</td></tr><tr><td>IN_CLOSE_WRITE</td><td>'
+      contenido += carpetas[i].close_write;
+      contenido += '</td></tr><tr><td>IN_CLOSE_NOWRITE</td><td>';
+      contenido += carpetas[i].close_nowrite;
+      contenido += '</td></tr><tr><td>IN_DELETE</td><td>';
+      contenido += carpetas[i].deletefile;
+      contenido += '</td></tr><tr><td>IN_DELETE_SELF</td><td>';
+      contenido += carpetas[i].deletefile_self;
+      contenido += '</td></tr><tr><td>IN_MOVE_SELF</td><td>';
+      contenido += carpetas[i].move_self;
+      contenido += '</td></tr><tr><td>IN_MOVED_FROM</td><td>';
+      contenido += carpetas[i].moved_from;
+      contenido += '</td></tr><tr><td>IN_MOVED_TO</td><td>';
+      contenido += carpetas[i].moved_to;
+      contenido += '</td></tr></table></td></tr></tbody></table>&nbsp';
+
+  }
+  $("#misTablas").html(contenido);
 }
