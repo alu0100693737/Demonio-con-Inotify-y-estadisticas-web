@@ -13,9 +13,9 @@
 12. Carpeta: 1 mask=IN_ACCESS
 13. Carpeta: 1 mask=IN_CLOSE_NOWRITE
 14. Carpeta: 1 mask=IN_CREATE nombre= asco
-15. Carpeta: 1 mask=IN_OPEN
-16. Carpeta: 1 mask=IN_ACCESS
-17. Carpeta: 1 mask=IN_CLOSE_NOWRITE
+15. Carpeta: data mask=IN_OPEN
+16. Carpeta: data mask=IN_ACCESS
+17. Carpeta: data mask=IN_CLOSE_NOWRITE
 18. Carpeta: 1 mask=IN_CREATE nombre= eeer
 19. Carpeta: 1 mask=IN_OPEN nombre= eeer
 20. Carpeta: 1 mask=IN_ATTRIB nombre= eeer
@@ -85,4 +85,3 @@
 3. Carpeta: 1 mask=IN_OPEN nombre= prueba444
 1. Carpeta: 1 mask=IN_ACCESS nombre= prueba444
 2. Carpeta: 1 mask=IN_CLOSE_NOWRITE nombre= prueba444
-3. ENVIADO LO ULTIMO

@@ -19,6 +19,10 @@ div#texto {
   margin-right: 30%;
 }
 
+#file-content {
+  padding: 3%;
+}
+
 .carpetas th, .carpetas td {
   vertical-align: top;
   padding: 5px;
@@ -47,7 +51,7 @@ h3 {
   font-weight: normal;
   text-transform: uppercase;
   font-family: "Tw Cen MT", cursive;
-  background-color: rgba(63, 98, 255, 0.4);
+  background-color: rgba(240, 242, 117, 0.6);
   padding: 10px 20px;
   color: black;
   display:inline-block;

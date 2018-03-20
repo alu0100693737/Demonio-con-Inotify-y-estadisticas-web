@@ -4,8 +4,8 @@
   <title>Estadisticas Inotify</title>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
   <link href="./css/global.css" rel="stylesheet" type="text/css">
-  <script src="./js/parsearFichero.js"></script>
   <script src="./js/main.js"></script>
+  <script src="./js/parsearFichero.js"></script>
 </head>
 <body>
   <h1>Estadisticas Inotify</h1>
@@ -74,7 +74,7 @@
   </table>
 
   <br>
-  <button class="button" id="anadirFila">Actualizar tabla</button>
+  <button class="button" id="anadirFila" onclick="leerFicheroEstadisticas()">Actualizar tabla</button>
 </section>
 <section>
   <input type="file" id="file-input" /><br><br>

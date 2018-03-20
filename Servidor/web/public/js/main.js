@@ -1,7 +1,8 @@
 $(document).ready(init);
 
 function init() {
-  "use strict"
+
+  
     $("#anadirFila").click(function () {
          $("#miTabla").each(function () {
              var tds = '<tr><td>&nbsp</td>';
