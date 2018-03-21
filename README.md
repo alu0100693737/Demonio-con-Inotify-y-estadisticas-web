@@ -59,4 +59,6 @@ Si desea probarse con otros datos, debe descargarse la carpeta y ponerla en un s
 
 * Proyecto desarrollado por Iván García Campos
 
+<img src="https://github.com/alu0100693737/Demonio-con-Inotify-y-estadisticas-web/blob/master/capturaInotify.PNG" width="800">
+
 
