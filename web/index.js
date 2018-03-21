@@ -17,10 +17,7 @@ app.get('/', function (req, res) {
  var router = express.Router();
   module.exports = router;
 */
-app.get('/chuchu', function (req, res) {
-  //res.send('Hello Chuchu!')
-  res.render('index', { title: 'Chuchu' });
-})
+
 
 app.get('/cat', function (req, res) {
   res.send('Got a GET request'+

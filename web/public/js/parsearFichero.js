@@ -1,5 +1,7 @@
 //Poner contenido fichero
 function readSingleFile(e) {
+  
+  console.log("entrando\n");
   var file = e.target.files[0];
   if (!file)
   return;
@@ -19,6 +21,7 @@ function readSingleFile(e) {
   leerFicheroEstadisticas(fileName);
 }
 
+
 function displayContents(contents) {
   var element = document.getElementById('file-content');
   element.textContent = contents;
@@ -28,12 +31,13 @@ function displayContents(contents) {
 function leerFicheroEstadisticas(fichero) {
   var rawFile = new XMLHttpRequest();
   var allText;
-
+  console.log("HOLA " + fichero);
   rawFile.open("GET", fichero, false);
   rawFile.onreadystatechange = function ()  {
     if(rawFile.readyState === 4)  {
       if(rawFile.status === 200 || rawFile.status == 0) {
         allText = rawFile.responseText;
+        
         var splitear = allText.split("\n")
         filtrarYClasificar(splitear);
 
@@ -166,7 +170,7 @@ function mostrarResultado(carpetas) {
         contenido += '<table style="float: left;">';
       }
 
-      contenido += '<tbody><tr><td>  <table class="carpetas">><tr><td><FONT FACE="raro, courier" SIZE=4 COLOR="black">Nombre: ';
+      contenido += '<tbody><tr><td>  <table class="carpetas"><tr><td><FONT FACE="raro, courier" SIZE=4 COLOR="black">Nombre: ';
       contenido += carpetas[i].nombre.trim();
 
       contenido += '</FONT></td><td><FONT FACE="raro, courier" SIZE=5 COLOR="black">Num de llamadas</FONT></td></tr><tr><td>IN_CREATE</td><td>';
@@ -193,7 +197,7 @@ function mostrarResultado(carpetas) {
       contenido += carpetas[i].moved_from;
       contenido += '</td></tr><tr><td>IN_MOVED_TO</td><td>';
       contenido += carpetas[i].moved_to;
-      contenido += '</td></tr></table></td></tr></tbody></table>&nbsp';
+      contenido += '</td></tr></table></td></tr></tbody></table>';
 
   }
   $("#misTablas").html(contenido);

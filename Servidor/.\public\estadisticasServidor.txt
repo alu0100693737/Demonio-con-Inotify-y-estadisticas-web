@@ -1,0 +1,60 @@
+1. Carpeta: data mask=IN_ACCESS nombre= cliente
+2. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+3. Carpeta: data mask=IN_OPEN nombre= cliente
+4. Carpeta: data mask=IN_ACCESS nombre= cliente
+5. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+2. Carpeta: 11 mask=IN_OPEN
+6. Carpeta: data mask=IN_OPEN nombre= cliente
+1. Carpeta: 11 mask=IN_ACCESS
+2. Carpeta: 11 mask=IN_CLOSE_NOWRITE
+1. Carpeta: data mask=IN_ACCESS nombre= cliente
+2. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+3. Carpeta: data mask=IN_OPEN nombre= cliente
+4. Carpeta: data mask=IN_ACCESS nombre= cliente
+5. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+3. Carpeta: 11 mask=IN_OPEN
+6. Carpeta: data mask=IN_OPEN nombre= cliente
+1. Carpeta: 11 mask=IN_ATTRIB nombre= ee
+2. Carpeta: 11 mask=IN_CLOSE_WRITE nombre= ee
+1. Carpeta: data mask=IN_ACCESS nombre= cliente
+2. Carpeta: data mask=IN_OPEN nombre= cliente
+3. Carpeta: data mask=IN_ACCESS nombre= cliente
+4. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+5. Carpeta: 11 mask=IN_CREATE nombre= ee
+6. Carpeta: 11 mask=IN_OPEN nombre= ee
+5. Carpeta: data mask=IN_OPEN nombre= cliente
+1. Carpeta: data mask=IN_ACCESS nombre= cliente
+2. Carpeta: data mask=IN_OPEN nombre= cliente
+3. Carpeta: data mask=IN_ACCESS nombre= cliente
+4. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+3. Carpeta: 11 mask=IN_CREATE nombre= e
+5. Carpeta: data mask=IN_OPEN nombre= cliente
+1. Carpeta: data mask=IN_ACCESS nombre= cliente
+2. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+3. Carpeta: data mask=IN_OPEN nombre= cliente
+4. Carpeta: data mask=IN_ACCESS nombre= cliente
+5. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+1. Carpeta: 11 mask=IN_OPEN
+6. Carpeta: data mask=IN_OPEN nombre= cliente
+1. Carpeta: 11 mask=IN_ACCESS
+2. Carpeta: 11 mask=IN_CLOSE_NOWRITE
+3. Carpeta: 11 mask=IN_DELETE nombre= ee
+1. Carpeta: data mask=IN_ACCESS nombre= cliente
+2. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+3. Carpeta: data mask=IN_OPEN nombre= cliente
+4. Carpeta: data mask=IN_ACCESS nombre= cliente
+5. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+4. Carpeta: 11 mask=IN_CREATE nombre= pepe
+5. Carpeta: 11 mask=IN_CREATE nombre= asco
+6. Carpeta: 11 mask=IN_CREATE nombre= h
+7. Carpeta: 11 mask=IN_OPEN nombre= h
+6. Carpeta: data mask=IN_OPEN nombre= cliente
+1. Carpeta: 11 mask=IN_ATTRIB nombre= h
+2. Carpeta: 11 mask=IN_CLOSE_WRITE nombre= h
+1. Carpeta: data mask=IN_ACCESS nombre= cliente
+2. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+3. Carpeta: data mask=IN_OPEN nombre= cliente
+4. Carpeta: data mask=IN_ACCESS nombre= cliente
+5. Carpeta: data mask=IN_CLOSE_NOWRITE nombre= cliente
+6. Carpeta: data mask= IN_MODIFY nombre= cliente.c
+7. Carpeta: data mask=IN_OPEN nombre= cliente.c

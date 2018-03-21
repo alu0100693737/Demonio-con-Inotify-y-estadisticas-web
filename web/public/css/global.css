@@ -1,7 +1,7 @@
 body {
   background-color: black;
   background-image: url("fondo.jpg");
-  background-size: 90%;
+  background-size: 95%;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -92,13 +92,24 @@ a[title]:hover:after {
   margin: 10px 0px;
   margin-right: 40px;
   background-color: rgba(255, 255, 255, 0.1);
-  position:relative;
   z-index: 1;
 }
 div {
   position: relative;
 }
 
+#file-input {
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-right: 30%;
+}
+
 table {
   margin:2%;
 }
+
+p {
+  padding: 2%;
+  margin-right: 30%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+

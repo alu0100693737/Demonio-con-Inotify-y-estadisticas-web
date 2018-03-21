@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 	if(server == NULL)
 		printf("Error 2\n");
 
-	printf("YES %s", argv[3]);
+	//printf("YES %s", argv[3]);
 	bzero((char*)&serv_addr, sizeof(serv_addr));//No hace falta, limpiando servidor
 
 	serv_addr.sin_family = AF_INET;//protocolo de internet
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
 	if(connect(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0)
 		printf("No se pudo conectar Error 3\n");
 
-	printf("Introducir el mensaje:\n");
+	//printf("Introducir el mensaje:\n");
 //	bzero(buffer, 256);
 //	fgets(buffer, 255, stdin);
 	i = write(sockfd, buffer, strlen(buffer));

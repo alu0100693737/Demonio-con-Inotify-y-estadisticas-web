@@ -6,22 +6,25 @@
   <link href="./css/global.css" rel="stylesheet" type="text/css">
   <script src="./js/parsearFichero.js"></script>
   <script src="./js/main.js"></script>
+  
 </head>
 <body>
   <h1>Estadisticas Inotify</h1>
-  <div class="contenido">
+<div class="contenido">
+   <input type="file" id="file-input" /><br><br> 
     <div id="misTablas">
 
   </div>
-
-  <br>
-  <button class="button" id="anadirFila" onclick="leerFicheroEstadisticas('estadisticasServidor.txt')">Actualizar tabla</button>
 </div>
-<div>
-  <input type="file" id="file-input" /><br><br>
+
+
+<div id="info">
+  <!--<button class="button" id="anadirFila" onclick="leerFicheroEstadisticas('estadisticasServidor.txt')">Actualizar tabla</button>
+--><br>
   <div id="texto">
     <pre id="file-content"></pre>
   </div>
 </div>
+
 </body>
 </html>
