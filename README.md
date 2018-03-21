@@ -55,6 +55,9 @@ Adicionalmente, se ha elaborado una pequeña pag web en nodejs disponible actual
 
 Para ver un ejemplo de uso, solo debe entrarse en https://vagrant-alu0100693737.c9users.io/ e introducir un fichero con nombre: estadisticasServidor.txt. Al coincidir el nombre con lo que se espera, se utilizará el fichero estadisticasServidor.txt que está en la carpeta /web.
 
+Si la aplicación no estuviera desplegada, entrar en https://c9.io/alu0100693737/vagrant, carpeta /web y poner:
+     node index.js
+
 Si desea probarse con otros datos, debe descargarse la carpeta y ponerla en un servidor local como wamp. 
 
 * Proyecto desarrollado por Iván García Campos
